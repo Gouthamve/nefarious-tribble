@@ -35,6 +35,7 @@ sheet.useServiceAccountAuth(creds, function(err) {
 		});
 		newTeam.save(function(err) {
 			if (err) {
+				console.log(err)
 				res.json({
 					success: false
 				})
@@ -44,6 +45,7 @@ sheet.useServiceAccountAuth(creds, function(err) {
 				})
 				addTeamToSheet(req.body);
 			} else {
+				console.log(newTeam.members.length, newTeam.members[0].fname)
 				res.json({
 					success: false
 				})
@@ -51,7 +53,7 @@ sheet.useServiceAccountAuth(creds, function(err) {
 		})
 	});
 
-	app.listen(80, function() {
+	app.listen(3000, function() {
 		console.log('CORS-enabled web server listening on port 80');
 	});
 
